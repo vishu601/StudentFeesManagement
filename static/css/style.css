@@ -1,0 +1,32 @@
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+}
+
+.sidebar{
+    min-height:100vh;
+    background:#1f2937;
+}
+
+.sidebar a{
+    color:#fff;
+    text-decoration:none;
+    display:block;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.navbar{
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+}
