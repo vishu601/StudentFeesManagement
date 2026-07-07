@@ -10,8 +10,7 @@ SECRET_KEY = 'django-insecure-^(#o@k^evwch)h$s#4#hgycgoz8!-9=hpsj%u7v-4)4b8i62=n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['studentfeesmanagement-npey.onrender.com', 'localhost', '127.0.0.1', '*']
 
 # Application definition
 
