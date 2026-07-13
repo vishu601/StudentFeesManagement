@@ -3,24 +3,24 @@ name: Django Student Fees CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Agar branch master hai, toh master likhna
+      - main
 
 jobs:
-  # Continuous Integration (Sirf Code Testing aur Validation)
   continuous-integration:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4  # Node 24 support ke liye update kiya
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5  # Node 24 support ke liye update kiya
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install Pillow  # <--- Yeh line humne force install ke liye jodh di!
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run Django Tests
