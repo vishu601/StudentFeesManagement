@@ -1,11 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 {% load static %}
 <head>
-    <title>Student Fees Management</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Fees Management - Premium Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-gradient: radial-gradient(circle at top right, #1e1b4b 0%, #0f172a 40%, #090d16 100%);
+            --sidebar-bg: rgba(15, 23, 42, 0.75);
+            --card-bg: rgba(30, 41, 59, 0.45);
+            --accent-primary: #6366f1;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --accent-info: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass-blur: blur(16px);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: -0.01em;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.5);
+        }
+
+        nav, .navbar {
+            background: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: var(--glass-blur) !important;
+            -webkit-backdrop-filter: var(--glass-blur) !important;
+            border-bottom: 1px solid var(--border-color) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            padding: 12px 24px !important;
+        }
+
+        .dashboard-container {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        .sidebar-wrapper {
+            background: var(--sidebar-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-right: 1px solid var(--border-color);
+            border-radius: 20px;
+            min-height: calc(100vh - 120px);
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            transition: var(--transition-smooth);
+        }
+
+        .main-content-area {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            min-height: calc(100vh - 120px);
+            transition: var(--transition-smooth);
+        }
+
+        /* Responsive components override */
+        .card, .dashboard-metric-card {
+            background: rgba(30, 41, 59, 0.6) !important;
+            backdrop-filter: var(--glass-blur) !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 18px !important;
+            color: var(--text-main) !important;
+            transition: var(--transition-smooth) !important;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4) !important;
+            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.15) !important;
+        }
+
+        .table {
+            color: var(--text-main) !important;
+            border-collapse: separate !important;
+            border-spacing: 0 8px !important;
+        }
+
+        .table thead th {
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            border: none !important;
+            color: var(--text-muted) !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 16px !important;
+            border-radius: 8px;
+        }
+
+        .table tbody tr {
+            background: rgba(30, 41, 59, 0.35) !important;
+            transition: var(--transition-smooth);
+        }
+
+        .table tbody tr:hover {
+            background: rgba(30, 41, 59, 0.7) !important;
+            transform: scale(1.005);
+        }
+
+        .table tbody td {
+            padding: 16px !important;
+            border-top: 1px solid var(--border-color) !important;
+            border-bottom: 1px solid var(--border-color) !important;
+            vertical-align: middle;
+        }
+
+        .table tbody td:first-child {
+            border-left: 1px solid var(--border-color) !important;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .table tbody td:last-child {
+            border-right: 1px solid var(--border-color) !important;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, #4f46e5 100%) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            padding: 10px 22px !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35) !important;
+            transition: var(--transition-smooth) !important;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.55) !important;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--accent-success) 0%, #059669 100%) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5) !important;
+        }
+
+        .badge {
+            padding: 8px 12px !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+        }
+        
+        .bg-success {
+            background-color: rgba(16, 185, 129, 0.15) !important;
+            color: #34d399 !important;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .bg-danger {
+            background-color: rgba(239, 68, 68, 0.15) !important;
+            color: #f87171 !important;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        input, select, textarea {
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-main) !important;
+            border-radius: 12px !important;
+            padding: 12px 16px !important;
+            transition: var(--transition-smooth) !important;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-primary) !important;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.25) !important;
+            outline: none !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -14,28 +243,53 @@
 
 {% include 'includes/navbar.html' %}
 
-<div class="container-fluid">
+<div class="container-fluid dashboard-container">
+    <div class="row g-4">
+        
+        <div class="col-lg-2 col-md-3 d-none d-md-block">
+            <div class="sidebar-wrapper">
+                {% include 'includes/sidebar.html' %}
+            </div>
+        </div>
 
-<div class="row">
+        <div class="col-lg-10 col-md-9 col-12">
+            <div class="main-content-area">
+                
+                <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-secondary-subtle">
+                    <div>
+                        <h2 class="text-gradient mb-1">Financial Operations Console</h2>
+                        <p class="text-muted small mb-0">System Node Status: <span class="text-success"><i class="fas fa-circle-notch fa-spin me-1"></i> Active</span></p>
+                    </div>
+                    <div class="text-end d-none d-sm-block">
+                        <span class="badge bg-success"><i class="fas fa-shield-halved me-1"></i> Secure SSL</span>
+                    </div>
+                </div>
 
-<div class="col-md-2 p-0">
+                {% block content %}
+                {% endblock %}
+                
+            </div>
+        </div>
 
-{% include 'includes/sidebar.html' %}
-
+    </div>
 </div>
 
-<div class="col-md-10">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-{% block content %}
-
-{% endblock %}
-
-</div>
-
-</div>
-
-</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contentArea = document.querySelector('.main-content-area');
+        if (contentArea) {
+            contentArea.style.opacity = 0;
+            contentArea.style.transform = "translateY(10px)";
+            setTimeout(() => {
+                contentArea.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                contentArea.style.opacity = 1;
+                contentArea.style.transform = "translateY(0)";
+            }, 100);
+        }
+    });
+</script>
 
 </body>
-
 </html>
