@@ -59,3 +59,12 @@ jobs:
     - name: Test Docker Build
       run: |
         docker compose build
+
+
+    # ==================== CD STEP START ====================
+    # 6. Agar tests aur build pass ho gaye, toh Render par deploy kar do
+    - name: Deploy to Render
+      if: github.ref == 'refs/heads/main'  # Sirf main branch push hone par deploy hoga
+      run: |
+        curl -f "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+    # ==================== CD STEP END ====================
