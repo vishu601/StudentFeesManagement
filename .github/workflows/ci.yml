@@ -1,0 +1,61 @@
+name: Django CI with Docker
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      # GitHub Actions ke runner par temporary Postgres db chalu karega
+      db:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: student_fees_db
+          POSTGRES_USER: fees_user
+          POSTGRES_PASSWORD: fees_password
+        ports:
+          - 5432:5432
+        # Jab tak DB ready nahi hota, step hold rahega
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    # 1. GitHub runner par tumhara code download karega
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Python environment setup karega
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-month: '3.10'
+
+    # 3. Dependencies install karega (Postgres drivers ke sath)
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # 4. Django ke Tests run karega (Postgres settings ke sath)
+    - name: Run Django Tests
+      env:
+        DB_HOST: 127.0.0.1  # Localhost pe chalega runner ke
+        DB_NAME: student_fees_db
+        DB_USER: fees_user
+        DB_PASSWORD: fees_password
+      run: |
+        python manage.py migrate
+        python manage.py test --noinput
+
+    # 5. Docker Build Test karega (Yeh verify karne ke liye ki Dockerfile sahi hai)
+    - name: Test Docker Build
+      run: |
+        docker compose build
