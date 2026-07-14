@@ -1,0 +1,38 @@
+services:
+  # Container 1: PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: student_db
+    restart: always
+    volumes:
+      - postgres_fees_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=student_fees_db
+      - POSTGRES_USER=fees_user
+      - POSTGRES_PASSWORD=fees_password
+    ports:
+      - "5433:5432"
+
+  # Container 2: Django Web App
+  web:
+    build: .
+    container_name: student_fees_app
+    restart: always
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8084:8000"  # Humne isko 8082 par map kiya hai taaki port clash na ho
+    environment:
+      - DB_HOST=db
+      - DB_NAME=student_fees_db
+      - DB_USER=fees_user
+      - DB_PASSWORD=fees_password
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  postgres_fees_data:
