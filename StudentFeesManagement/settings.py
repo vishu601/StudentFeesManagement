@@ -17,7 +17,8 @@ ALLOWED_HOSTS = ['studentfeesmanagement-npey.onrender.com', 'localhost', '127.0.
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+   'django_prometheus', 
+   'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -30,9 +31,11 @@ INSTALLED_APPS = [
     'fees',
     'reports',
     'home',
+
 ]
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -40,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ]
 
 ROOT_URLCONF = 'StudentFeesManagement.urls'

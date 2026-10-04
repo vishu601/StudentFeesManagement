@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('students/', include('students.urls')),
+    path('', include('django_prometheus.urls')),
 ]
 
 if settings.DEBUG:
