@@ -17,18 +17,18 @@
 
     <style>
         :root {
-            --bg-base: #090d16;
-            --bg-gradient: radial-gradient(circle at top right, #1e1b4b 0%, #0f172a 40%, #090d16 100%);
-            --sidebar-bg: rgba(15, 23, 42, 0.75);
-            --card-bg: rgba(30, 41, 59, 0.45);
+            --bg-base: #831843;
+            --bg-gradient: radial-gradient(circle at top right, #f472b6 0%, #db2777 45%, #9d174d 100%);
+            --sidebar-bg: rgba(131, 24, 67, 0.75);
+            --card-bg: rgba(157, 23, 77, 0.45);
             --accent-primary: #6366f1;
             --accent-success: #10b981;
             --accent-warning: #f59e0b;
             --accent-danger: #ef4444;
             --accent-info: #06b6d4;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #fff1f2;
+            --text-muted: #fbcfe8;
+            --border-color: rgba(255, 255, 255, 0.14);
             --glass-blur: blur(16px);
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -52,19 +52,19 @@
             background: var(--bg-base);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(99, 102, 241, 0.2);
+            background: rgba(244, 114, 182, 0.35);
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(99, 102, 241, 0.5);
+            background: rgba(244, 114, 182, 0.65);
         }
 
         nav, .navbar {
-            background: rgba(15, 23, 42, 0.8) !important;
+            background: rgba(131, 24, 67, 0.82) !important;
             backdrop-filter: var(--glass-blur) !important;
             -webkit-backdrop-filter: var(--glass-blur) !important;
             border-bottom: 1px solid var(--border-color) !important;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
             padding: 12px 24px !important;
         }
 
@@ -80,7 +80,7 @@
             border-right: 1px solid var(--border-color);
             border-radius: 20px;
             min-height: calc(100vh - 120px);
-            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.18);
             padding: 15px;
             transition: var(--transition-smooth);
         }
@@ -92,14 +92,14 @@
             border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.28);
             min-height: calc(100vh - 120px);
             transition: var(--transition-smooth);
         }
 
         /* Responsive components override */
         .card, .dashboard-metric-card {
-            background: rgba(30, 41, 59, 0.6) !important;
+            background: rgba(157, 23, 77, 0.55) !important;
             backdrop-filter: var(--glass-blur) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: 18px !important;
@@ -111,8 +111,8 @@
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.4) !important;
-            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.15) !important;
+            border-color: rgba(251, 207, 232, 0.45) !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25) !important;
         }
 
         .table {
@@ -122,7 +122,7 @@
         }
 
         .table thead th {
-            background-color: rgba(15, 23, 42, 0.6) !important;
+            background-color: rgba(131, 24, 67, 0.7) !important;
             border: none !important;
             color: var(--text-muted) !important;
             font-weight: 600;
@@ -134,12 +134,12 @@
         }
 
         .table tbody tr {
-            background: rgba(30, 41, 59, 0.35) !important;
+            background: rgba(157, 23, 77, 0.4) !important;
             transition: var(--transition-smooth);
         }
 
         .table tbody tr:hover {
-            background: rgba(30, 41, 59, 0.7) !important;
+            background: rgba(157, 23, 77, 0.7) !important;
             transform: scale(1.005);
         }
 
@@ -209,7 +209,7 @@
         }
 
         input, select, textarea {
-            background-color: rgba(15, 23, 42, 0.6) !important;
+            background-color: rgba(131, 24, 67, 0.65) !important;
             border: 1px solid var(--border-color) !important;
             color: var(--text-main) !important;
             border-radius: 12px !important;
@@ -218,8 +218,8 @@
         }
 
         input:focus, select:focus, textarea:focus {
-            border-color: var(--accent-primary) !important;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.25) !important;
+            border-color: #f9a8d4 !important;
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.3) !important;
             outline: none !important;
         }
 
@@ -230,7 +230,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            background: linear-gradient(135deg, #fff 0%, #fbcfe8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
