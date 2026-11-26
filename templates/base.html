@@ -17,17 +17,17 @@
 
     <style>
         :root {
-            --bg-base: #831843;
-            --bg-gradient: radial-gradient(circle at top right, #f472b6 0%, #db2777 45%, #9d174d 100%);
-            --sidebar-bg: rgba(131, 24, 67, 0.75);
-            --card-bg: rgba(157, 23, 77, 0.45);
+            --bg-base: #7c2d12;
+            --bg-gradient: radial-gradient(circle at top right, #fb923c 0%, #ea580c 45%, #9a3412 100%);
+            --sidebar-bg: rgba(124, 45, 18, 0.75);
+            --card-bg: rgba(154, 52, 18, 0.45);
             --accent-primary: #6366f1;
             --accent-success: #10b981;
             --accent-warning: #f59e0b;
             --accent-danger: #ef4444;
             --accent-info: #06b6d4;
-            --text-main: #fff1f2;
-            --text-muted: #fbcfe8;
+            --text-main: #fff7ed;
+            --text-muted: #fed7aa;
             --border-color: rgba(255, 255, 255, 0.14);
             --glass-blur: blur(16px);
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,15 +52,15 @@
             background: var(--bg-base);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(244, 114, 182, 0.35);
+            background: rgba(251, 146, 60, 0.35);
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(244, 114, 182, 0.65);
+            background: rgba(251, 146, 60, 0.65);
         }
 
         nav, .navbar {
-            background: rgba(131, 24, 67, 0.82) !important;
+            background: rgba(124, 45, 18, 0.82) !important;
             backdrop-filter: var(--glass-blur) !important;
             -webkit-backdrop-filter: var(--glass-blur) !important;
             border-bottom: 1px solid var(--border-color) !important;
@@ -99,7 +99,7 @@
 
         /* Responsive components override */
         .card, .dashboard-metric-card {
-            background: rgba(157, 23, 77, 0.55) !important;
+            background: rgba(154, 52, 18, 0.55) !important;
             backdrop-filter: var(--glass-blur) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: 18px !important;
@@ -111,7 +111,7 @@
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: rgba(251, 207, 232, 0.45) !important;
+            border-color: rgba(254, 215, 170, 0.45) !important;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25) !important;
         }
 
@@ -122,7 +122,7 @@
         }
 
         .table thead th {
-            background-color: rgba(131, 24, 67, 0.7) !important;
+            background-color: rgba(124, 45, 18, 0.7) !important;
             border: none !important;
             color: var(--text-muted) !important;
             font-weight: 600;
@@ -134,12 +134,12 @@
         }
 
         .table tbody tr {
-            background: rgba(157, 23, 77, 0.4) !important;
+            background: rgba(154, 52, 18, 0.4) !important;
             transition: var(--transition-smooth);
         }
 
         .table tbody tr:hover {
-            background: rgba(157, 23, 77, 0.7) !important;
+            background: rgba(154, 52, 18, 0.7) !important;
             transform: scale(1.005);
         }
 
@@ -209,7 +209,7 @@
         }
 
         input, select, textarea {
-            background-color: rgba(131, 24, 67, 0.65) !important;
+            background-color: rgba(124, 45, 18, 0.65) !important;
             border: 1px solid var(--border-color) !important;
             color: var(--text-main) !important;
             border-radius: 12px !important;
@@ -218,8 +218,8 @@
         }
 
         input:focus, select:focus, textarea:focus {
-            border-color: #f9a8d4 !important;
-            box-shadow: 0 0 15px rgba(244, 114, 182, 0.3) !important;
+            border-color: #fdba74 !important;
+            box-shadow: 0 0 15px rgba(251, 146, 60, 0.3) !important;
             outline: none !important;
         }
 
@@ -230,7 +230,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #fff 0%, #fbcfe8 100%);
+            background: linear-gradient(135deg, #fff 0%, #fed7aa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
